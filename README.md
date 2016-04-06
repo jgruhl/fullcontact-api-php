@@ -1,6 +1,8 @@
 FullContact PHP Library
 ================
 
+This clone allows options to be passed into full contact's curl call.
+
 This is a PHP helper for the FullContact API - http://www.fullcontact.com/
 
 It is modeled after the Twilio PHP Helper library because I think it's generally well done and thought through. This isn't official but should generally work except for the incomplete items in the TODO list below.
