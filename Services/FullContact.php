@@ -80,9 +80,7 @@ class Services_FullContact
                 '?' . http_build_query($params);
 
         //open connection
-        $connection = curl_init($fullUrl);
-        curl_setopt($connection, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($connection, CURLOPT_USERAGENT, self::USER_AGENT);
+        $connection = $this->_get_curl_connection($fullUrl);
 
         //execute request
         $this->response_json = curl_exec($connection);
@@ -94,5 +92,20 @@ class Services_FullContact
         }
 
         return $this->response_obj;
+    }
+
+    /**
+     * Inits and returns curl connection. If you would like to add additional curl configuration and your method of
+     * configuration override this method.
+     * 
+     * @param $url
+     * @return resource
+     */
+    protected function _get_curl_connection($url)
+    {
+      $connection = curl_init($url);
+      curl_setopt($connection, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($connection, CURLOPT_USERAGENT, self::USER_AGENT);
+      return $connection;
     }
 }
